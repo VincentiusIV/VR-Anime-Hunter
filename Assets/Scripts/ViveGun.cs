@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(SteamVR_TrackedObject))]
 public class ViveGun : MonoBehaviour {
@@ -14,6 +15,7 @@ public class ViveGun : MonoBehaviour {
     public bool left;
     public bool right;
     public float speed;
+
     // Use this for initialization
     void Awake()
     {
@@ -41,7 +43,11 @@ public class ViveGun : MonoBehaviour {
             {
                 playerObject.transform.Translate(new Vector3(speed, 0.0f, 0.0f));
             }
-            
+        }
+
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
+        {
+            SceneManager.LoadScene("roadToHell");
         }
     }
 }

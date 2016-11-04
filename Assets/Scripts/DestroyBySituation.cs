@@ -31,6 +31,10 @@ public class DestroyBySituation : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        if(this.CompareTag("Restart"))
+        {
+            SceneManager.LoadScene("RoadToHell");
+        }
         // If this object is a Pick Up, destroy it and call AddBuff() function in game controller
         if(this.CompareTag("Pick Up") && other.CompareTag("Bolt"))
         {
