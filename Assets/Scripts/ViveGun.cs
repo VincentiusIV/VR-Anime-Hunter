@@ -29,7 +29,6 @@ public class ViveGun : MonoBehaviour {
         if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger))
         {
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
-            weaponAudio.Play();
         }
 
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
