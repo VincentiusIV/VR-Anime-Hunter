@@ -31,7 +31,7 @@ public class DestroyBySituation : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(this.CompareTag("Restart"))
+        if(this.CompareTag("Bolt") && other.CompareTag("Restart"))
         {
             SceneManager.LoadScene("RoadToHell");
         }
