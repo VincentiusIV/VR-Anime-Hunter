@@ -31,17 +31,14 @@ public class ViveGun : MonoBehaviour {
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
         }
 
-        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
+        if (device.GetPress(SteamVR_Controller.ButtonMask.Grip))
         {
-            Debug.Log("you held grip button");
             if (left)
             {
-                Debug.Log("you held left grip button");
                 playerObject.transform.Translate(new Vector3(-speed, 0.0f, 0.0f));
             }
             else if(right)
             {
-                Debug.Log("you held right grip button");
                 playerObject.transform.Translate(new Vector3(speed, 0.0f, 0.0f));
             }
             
