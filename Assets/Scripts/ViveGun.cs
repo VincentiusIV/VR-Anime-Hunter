@@ -6,12 +6,12 @@ public class ViveGun : MonoBehaviour {
 
     SteamVR_TrackedObject trackedObj;
     SteamVR_Controller.Device device;
+    private GameObject playerObject;
 
     public Transform shotSpawn;
     public GameObject shot;
     public AudioSource weaponAudio;
 
-    public Transform playerTransform;
     public bool left;
     public bool right;
     public float speed;
@@ -19,6 +19,7 @@ public class ViveGun : MonoBehaviour {
     void Awake()
     {
         trackedObj = GetComponent<SteamVR_TrackedObject>();
+        playerObject = GameObject.FindWithTag("Player");
     }
     void FixedUpdate()
     {
@@ -38,12 +39,12 @@ public class ViveGun : MonoBehaviour {
             if (left)
             {
                 Debug.Log("you held left grip button");
-                playerTransform.Translate(new Vector3(-speed, 0.0f, 0.0f));
+                playerObject.transform.Translate(new Vector3(-speed, 0.0f, 0.0f));
             }
             else if(right)
             {
                 Debug.Log("you held right grip button");
-                playerTransform.Translate(new Vector3(speed, 0.0f, 0.0f));
+                playerObject.transform.Translate(new Vector3(speed, 0.0f, 0.0f));
             }
             
         }
