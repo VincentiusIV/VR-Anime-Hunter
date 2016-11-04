@@ -11,6 +11,10 @@ public class ViveGun : MonoBehaviour {
     public GameObject shot;
     public AudioSource weaponAudio;
 
+    public Transform playerTransform;
+    public bool left;
+    public bool right;
+    public float speed;
     // Use this for initialization
     void Awake()
     {
@@ -27,6 +31,18 @@ public class ViveGun : MonoBehaviour {
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
             weaponAudio.Play();
         }
-    }
 
+        if (device.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
+        {
+            if(left)
+            {
+                playerTransform.Translate(new Vector3(-speed, 0.0f, 0.0f));
+            }
+            else if(right)
+            {
+                playerTransform.Translate(new Vector3(speed, 0.0f, 0.0f));
+            }
+            
+        }
+    }
 }
