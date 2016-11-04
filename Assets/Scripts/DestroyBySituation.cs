@@ -49,7 +49,7 @@ public class DestroyBySituation : MonoBehaviour
         if (other.CompareTag("Player") && this.CompareTag("Enemy"))
         {
             CreateExplosion(other.transform.position);
-            //StartCoroutine(endGame());
+            StartCoroutine(endGame());
             gameController.GameOver();
 
             CreateExplosion(transform.position);
