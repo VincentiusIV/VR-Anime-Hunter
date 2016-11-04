@@ -58,7 +58,7 @@ public class DestroyBySituation : MonoBehaviour
         if(other.CompareTag("Bolt") && this.CompareTag("Enemy"))
         {
             CreateExplosion(transform.position);
-            
+            Destroy(this.gameObject);
             Destroy(other.gameObject);
             gameController.IncreaseScore(10);
             return;
