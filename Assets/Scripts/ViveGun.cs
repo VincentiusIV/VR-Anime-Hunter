@@ -10,7 +10,6 @@ public class ViveGun : MonoBehaviour {
 
     public Transform shotSpawn;
     public GameObject shot;
-    public AudioSource weaponAudio;
 
     public bool left;
     public bool right;
