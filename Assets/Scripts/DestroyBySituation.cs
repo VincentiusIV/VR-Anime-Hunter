@@ -41,10 +41,10 @@ public class DestroyBySituation : MonoBehaviour
         }
 
         // If other gameobject is the Player, create an explosion
-        if (other.CompareTag("Player") && this.CompareTag("Enemy");
+        if (other.CompareTag("Player") && this.CompareTag("Enemy")
         {
             CreateExplosion(other.transform.position);
-            StartCoroutine(endGame());
+            //StartCoroutine(endGame());
             gameController.GameOver();
 
             CreateExplosion(transform.position);
