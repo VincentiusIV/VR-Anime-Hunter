@@ -25,9 +25,9 @@ public class PlatformBehaviour : MonoBehaviour
     {
         if(repeatSpawning)
         {   
-            if (transform.position.z < 0 && spawnedNew != true)
+            if (transform.position.z < 30 && spawnedNew != true)
             {
-                Instantiate(roads[Random.Range(0, roads.Length -1)], new Vector3(0, 0, 59), Quaternion.identity);
+                Instantiate(roads[Random.Range(0, roads.Length -1)], new Vector3(0, 0, 89), Quaternion.identity);
                 spawnedNew = true;
             }
         }

@@ -9,6 +9,7 @@ public class ViveGun : MonoBehaviour {
 
     public Transform shotSpawn;
     public GameObject shot;
+    public AudioSource weaponAudio;
 
     // Use this for initialization
     void Awake()
@@ -24,6 +25,7 @@ public class ViveGun : MonoBehaviour {
         if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger))
         {
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            weaponAudio.Play();
         }
     }
 
