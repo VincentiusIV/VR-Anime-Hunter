@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class DestroyBySituation : MonoBehaviour
 {
@@ -30,9 +32,10 @@ public class DestroyBySituation : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         // If this object is a Pick Up, destroy it and call AddBuff() function in game controller
-        if(this.CompareTag("Pick Up"))
+        if(this.CompareTag("Pick Up") && other.CompareTag("Bolt"))
         {
             Destroy(this.gameObject);
+            Destroy(other.gameObject);
             gameController.AddBuff();
             return;
         }
@@ -41,7 +44,7 @@ public class DestroyBySituation : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             CreateExplosion(other.transform.position);
-            Destroy(other.gameObject);
+            StartCoroutine(endGame());
             gameController.GameOver();
 
             // If this game object is also an enemy, then create an explosion as well
@@ -66,6 +69,11 @@ public class DestroyBySituation : MonoBehaviour
         }
     }
 
+    IEnumerator endGame()
+    {
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene("endGame");
+    }
     /* This checks the z position of the object, and destroys it once it
      * surpasses the negative or positive boundary value.
      */
