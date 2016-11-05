@@ -16,9 +16,12 @@ public class ViveGun : MonoBehaviour {
     public bool right;
     public float speed;
 
+    private bool canShoot;
+
     // Use this for initialization
     void Awake()
     {
+        canShoot = true;
         trackedObj = GetComponent<SteamVR_TrackedObject>();
         playerObject = GameObject.FindWithTag("Player");
     }
@@ -28,9 +31,10 @@ public class ViveGun : MonoBehaviour {
     }
     void Update()
     {
-        if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger))
+        if (device.GetTouchDown(SteamVR_Controller.ButtonMask.Trigger) && canShoot)
         {
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            StartCoroutine(waitForShot());
         }
 
         if (device.GetPress(SteamVR_Controller.ButtonMask.Grip))
@@ -49,5 +53,11 @@ public class ViveGun : MonoBehaviour {
         {
             SceneManager.LoadScene("roadToHell");
         }
+    }
+
+    IEnumerator waitForShot()
+    {
+        yield return new WaitForSeconds(1.0f);
+        canShoot = true;
     }
 }

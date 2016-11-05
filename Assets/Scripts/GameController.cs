@@ -28,10 +28,6 @@ public class GameController : MonoBehaviour
 
     public WaveSettings WaveSettings;
 
-    public Text scoreText;
-    public Text restartText;
-    public Text timerText;
-
     private int score;
     private float counter;
     private bool gameRunning;
@@ -43,11 +39,6 @@ public class GameController : MonoBehaviour
     {
         StartCoroutine(WaveSpawner());
         gameRunning = true;
-
-        score = 0;
-        scoreText.text = "Score: " + score;
-        restartText.text = "";
-        counter = 0f;
     }
 
     /* Coroutine that spawns the waves of enemies and pick ups
@@ -106,13 +97,6 @@ public class GameController : MonoBehaviour
         {
             SceneManager.LoadScene("mainMenu");
         }
-
-        // Updates the timer only when the game is running
-        if(gameRunning)
-        {
-            counter += Time.time / 600;
-            timerText.text = counter + "s";
-        }
     }
 
     // Spawns a random object from given array, on a random location in the spawnarea
@@ -138,8 +122,6 @@ public class GameController : MonoBehaviour
     // This function is called when a bolt fired by the player hits an enemy
     public void IncreaseScore(int _score)
     {
-        score += _score;
-        scoreText.text = "Score: " + score;
     }
 
     // This is called whenever a Pick-Up is picked up by the player
