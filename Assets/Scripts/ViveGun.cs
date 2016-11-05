@@ -35,11 +35,11 @@ public class ViveGun : MonoBehaviour {
 
         if (device.GetPress(SteamVR_Controller.ButtonMask.Grip))
         {
-            if (left)
+            if (left && playerObject.transform.position.x > -9.5)
             {
                 playerObject.transform.Translate(new Vector3(-speed, 0.0f, 0.0f));
             }
-            else if(right)
+            else if(right && playerObject.transform.position.x < 9.5)
             {
                 playerObject.transform.Translate(new Vector3(speed, 0.0f, 0.0f));
             }

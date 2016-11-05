@@ -126,7 +126,13 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         gameRunning = false;
-        restartText.text = "Press 'R' to restart or 'M' for menu";
+        StartCoroutine(endGame());
+    }
+
+    IEnumerator endGame()
+    {
+        yield return new WaitForSeconds(2.0f);
+        SceneManager.LoadScene("endGame");
     }
 
     // This function is called when a bolt fired by the player hits an enemy

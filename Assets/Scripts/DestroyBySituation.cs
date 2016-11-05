@@ -49,9 +49,7 @@ public class DestroyBySituation : MonoBehaviour
         if (other.CompareTag("Player") && this.CompareTag("Enemy"))
         {
             CreateExplosion(other.transform.position);
-            StartCoroutine(endGame());
             gameController.GameOver();
-
             CreateExplosion(transform.position);
             Destroy(this.gameObject);
             return;
@@ -76,11 +74,7 @@ public class DestroyBySituation : MonoBehaviour
         }
     }
 
-    IEnumerator endGame()
-    {
-        yield return new WaitForSeconds(2.0f);
-        SceneManager.LoadScene("endGame");
-    }
+    
     /* This checks the z position of the object, and destroys it once it
      * surpasses the negative or positive boundary value.
      */
