@@ -35,6 +35,7 @@ public class ViveGun : MonoBehaviour {
         {
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
             StartCoroutine(waitForShot());
+            canShoot = false;
         }
 
         if (device.GetPress(SteamVR_Controller.ButtonMask.Grip))
